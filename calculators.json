@@ -1,0 +1,112 @@
+{
+    "calculators": [
+        {
+            "name": "Percentage Calculator",
+            "url": "/math/percentage.html",
+            "category": "Math",
+            "keywords": ["percentage", "percent", "calculation", "math", "ratio", "proportion"]
+        },
+        {
+            "name": "Fraction Calculator",
+            "url": "/math/fraction.html",
+            "category": "Math",
+            "keywords": ["fraction", "fractions", "math", "division", "ratio"]
+        },
+        {
+            "name": "Scientific Calculator",
+            "url": "/math/scientific.html",
+            "category": "Math",
+            "keywords": ["scientific", "math", "functions", "trigonometry", "logarithms"]
+        },
+        {
+            "name": "Age Calculator",
+            "url": "/date/age.html",
+            "category": "Date",
+            "keywords": ["age", "birthday", "date", "time", "birth", "years"]
+        },
+        {
+            "name": "Date Calculator",
+            "url": "/date/calculator.html",
+            "category": "Date",
+            "keywords": ["date", "calendar", "days", "weeks", "months", "years"]
+        },
+        {
+            "name": "Time Calculator",
+            "url": "/date/time.html",
+            "category": "Date",
+            "keywords": ["time", "duration", "hours", "minutes", "seconds"]
+        },
+        {
+            "name": "Loan Calculator",
+            "url": "/finance/loan.html",
+            "category": "Finance",
+            "keywords": ["loan", "mortgage", "finance", "money", "interest", "payment"]
+        },
+        {
+            "name": "Investment Calculator",
+            "url": "/finance/investment.html",
+            "category": "Finance",
+            "keywords": ["investment", "stocks", "returns", "finance", "money", "growth"]
+        },
+        {
+            "name": "Tax Calculator",
+            "url": "/finance/tax.html",
+            "category": "Finance",
+            "keywords": ["tax", "income", "finance", "money", "deductions", "refund"]
+        },
+        {
+            "name": "Unit Converter",
+            "url": "/converter/unit.html",
+            "category": "Converters",
+            "keywords": ["unit", "convert", "measurement", "length", "weight", "volume"]
+        },
+        {
+            "name": "Temperature Converter",
+            "url": "/converter/temperature.html",
+            "category": "Converters",
+            "keywords": ["temperature", "celsius", "fahrenheit", "kelvin", "convert"]
+        },
+        {
+            "name": "Currency Converter",
+            "url": "/converter/currency.html",
+            "category": "Converters",
+            "keywords": ["currency", "money", "exchange", "rates", "convert"]
+        },
+        {
+            "name": "BMI Calculator",
+            "url": "/health/bmi.html",
+            "category": "Health",
+            "keywords": ["bmi", "health", "fitness", "weight", "body mass", "health check"]
+        },
+        {
+            "name": "Calorie Calculator",
+            "url": "/health/calories.html",
+            "category": "Health",
+            "keywords": ["calories", "diet", "nutrition", "food", "health", "weight"]
+        },
+        {
+            "name": "Body Fat Calculator",
+            "url": "/health/bodyfat.html",
+            "category": "Health",
+            "keywords": ["body fat", "fitness", "health", "weight", "measurement"]
+        },
+        {
+            "name": "Scientific Calculator",
+            "url": "/scientific/calculator.html",
+            "category": "Scientific",
+            "keywords": ["scientific", "physics", "chemistry", "engineering", "math"]
+        },
+        {
+            "name": "Physics Calculator",
+            "url": "/scientific/physics.html",
+            "category": "Scientific",
+            "keywords": ["physics", "force", "energy", "velocity", "acceleration"]
+        },
+        {
+            "name": "Chemistry Calculator",
+            "url": "/scientific/chemistry.html",
+            "category": "Scientific",
+            "keywords": ["chemistry", "moles", "concentration", "reactions", "elements"]
+        }
+    ]
+} 
