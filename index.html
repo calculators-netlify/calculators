@@ -76,19 +76,8 @@
                     <a href="/health" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Health</a>
                 </div>
 
-                <!-- Search and Mobile Menu Button -->
-                <div class="flex items-center space-x-4">
-                    <!-- Desktop Search -->
-                    <div class="hidden sm:block">
-                        <div class="relative">
-                            <input type="text" id="searchInput" placeholder="Search calculators..." class="w-64 px-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <div class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mobile Menu Button -->
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center">
                     <div class="sm:hidden">
                         <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200 focus:outline-none" aria-expanded="false">
                             <span class="sr-only">Open main menu</span>
@@ -108,7 +97,13 @@
                 <a href="/converter" class="block text-white hover:text-gray-200 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Converters</a>
                 <a href="/health" class="block text-white hover:text-gray-200 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">Health</a>
                 <div class="px-3 py-2">
-                    <input type="text" id="mobileSearch" placeholder="Search calculators..." class="w-full px-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <div class="relative">
+                        <input type="text" id="mobileSearch" placeholder="Search calculators..." class="w-full px-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <!-- Mobile Search Results -->
+                        <div id="mobileSearchResults" class="hidden absolute left-0 right-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto z-50">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,6 +122,10 @@
                     <input type="text" id="heroSearch" placeholder="Search for calculators..." class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
                         <i class="fas fa-search text-xl"></i>
+                    </div>
+                    <!-- Hero Search Results -->
+                    <div id="heroSearchResults" class="hidden absolute left-0 right-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto z-50">
+                        <!-- Results will be populated here -->
                     </div>
                 </div>
             </div>
@@ -349,18 +348,37 @@
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
         const mobileMenu = document.querySelector('.mobile-menu');
         const mobileMenuBackdrop = document.querySelector('.mobile-menu-backdrop');
-        const searchResults = document.getElementById('searchResults');
-        const searchResultsList = document.getElementById('searchResultsList');
         const body = document.body;
         
         let calculatorData = null;
+        let categoryData = null;
         let searchTimeout = null;
+        let isDataLoaded = false;
 
         // Fetch calculator data
         fetch('/calculators.json')
             .then(response => response.json())
             .then(data => {
-                calculatorData = data.calculators;
+                console.log('Data loaded successfully:', data);
+                // Ensure we have the correct data structure
+                calculatorData = Array.isArray(data.calculators) ? data.calculators : [];
+                // Create categories from the data if not provided
+                if (!Array.isArray(data.categories)) {
+                    // Extract unique categories from calculators
+                    const uniqueCategories = [...new Set(calculatorData.map(calc => calc.category))];
+                    categoryData = uniqueCategories.map(category => ({
+                        name: category,
+                        url: `/${category.toLowerCase()}`,
+                        description: `${category} calculators and tools`,
+                        icon: getCategoryIcon(category),
+                        keywords: [category.toLowerCase(), 'calculator', 'tools']
+                    }));
+                } else {
+                    categoryData = data.categories;
+                }
+                isDataLoaded = true;
+                // Initialize search inputs after data is loaded
+                initializeSearchInputs();
             })
             .catch(error => {
                 console.error('Error loading calculator data:', error);
@@ -371,27 +389,60 @@
                         url: "/math/percentage.html",
                         category: "Math",
                         keywords: ["percentage", "percent", "calculation", "math", "ratio", "proportion"]
-                    },
-                    {
-                        name: "Age Calculator",
-                        url: "/date/age.html",
-                        category: "Date",
-                        keywords: ["age", "birthday", "date", "time", "birth", "years"]
-                    },
-                    {
-                        name: "Loan Calculator",
-                        url: "/finance/loan.html",
-                        category: "Finance",
-                        keywords: ["loan", "mortgage", "finance", "money", "interest", "payment"]
                     }
                 ];
+                categoryData = [
+                    {
+                        name: "Math",
+                        url: "/math",
+                        description: "Basic and advanced mathematical calculations",
+                        icon: "fa-square-root-alt",
+                        keywords: ["math", "mathematics", "calculation", "numbers"]
+                    }
+                ];
+                isDataLoaded = true;
+                // Initialize search inputs after fallback data is set
+                initializeSearchInputs();
             });
+
+        // Helper function to get category icon
+        function getCategoryIcon(category) {
+            const icons = {
+                'Math': 'fa-square-root-alt',
+                'Date': 'fa-calendar-alt',
+                'Finance': 'fa-dollar-sign',
+                'Converters': 'fa-exchange-alt',
+                'Health': 'fa-heartbeat',
+                'Scientific': 'fa-flask'
+            };
+            return icons[category] || 'fa-calculator';
+        }
+
+        // Initialize search inputs
+        function initializeSearchInputs() {
+            console.log('Initializing search inputs');
+            const searchInputs = document.querySelectorAll('input[type="text"]');
+            searchInputs.forEach(input => {
+                console.log('Setting up listener for input:', input.id);
+                input.addEventListener('input', () => handleSearchInput(input));
+                input.addEventListener('focus', () => {
+                    if (input.value) {
+                        handleSearchInput(input);
+                    }
+                });
+            });
+        }
 
         // Search functionality with predictions
         function handleSearchInput(input) {
+            console.log('Search input triggered:', input.value);
             const searchTerm = input.value.toLowerCase();
+            const resultsContainer = document.getElementById(input.id + 'Results');
             
-            if (!calculatorData) {
+            if (!isDataLoaded) {
+                console.log('Data not loaded yet, showing loading state');
+                resultsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">Loading search results...</p>';
+                resultsContainer.classList.remove('hidden');
                 return;
             }
 
@@ -402,74 +453,115 @@
 
             // Set new timeout to prevent too many searches while typing
             searchTimeout = setTimeout(() => {
-                const results = calculatorData.filter(calculator => {
-                    return calculator.name.toLowerCase().includes(searchTerm) ||
-                           calculator.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm)) ||
-                           calculator.category.toLowerCase().includes(searchTerm);
-                });
+                try {
+                    // Search in categories
+                    const categoryResults = categoryData ? categoryData.filter(category => {
+                        const searchableText = [
+                            category.name,
+                            category.description,
+                            ...(category.keywords || [])
+                        ].join(' ').toLowerCase();
+                        return searchableText.includes(searchTerm);
+                    }) : [];
 
-                displaySearchResults(results);
-            }, 200); // Reduced delay for faster response
+                    // Search in calculators
+                    const calculatorResults = calculatorData ? calculatorData.filter(calculator => {
+                        const searchableText = [
+                            calculator.name,
+                            calculator.category,
+                            ...(calculator.keywords || [])
+                        ].join(' ').toLowerCase();
+                        return searchableText.includes(searchTerm);
+                    }) : [];
+
+                    console.log('Search results:', { categories: categoryResults, calculators: calculatorResults });
+                    displaySearchResults(categoryResults, calculatorResults, resultsContainer);
+                } catch (error) {
+                    console.error('Error during search:', error);
+                    resultsContainer.innerHTML = '<p class="text-red-500 text-center py-4">An error occurred while searching. Please try again.</p>';
+                    resultsContainer.classList.remove('hidden');
+                }
+            }, 200);
         }
 
-        function displaySearchResults(results) {
-            searchResultsList.innerHTML = '';
+        function displaySearchResults(categories, calculators, container) {
+            console.log('Displaying results in container:', container.id);
+            container.innerHTML = '';
             
-            if (results.length === 0) {
-                searchResultsList.innerHTML = '<p class="text-gray-500 text-center py-4">No calculators found. Please try different keywords.</p>';
+            if (categories.length === 0 && calculators.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-4">No results found. Please try different keywords.</p>';
             } else {
-                // Group results by category
-                const groupedResults = results.reduce((acc, calculator) => {
-                    if (!acc[calculator.category]) {
-                        acc[calculator.category] = [];
-                    }
-                    acc[calculator.category].push(calculator);
-                    return acc;
-                }, {});
-
-                // Display results grouped by category
-                Object.entries(groupedResults).forEach(([category, calculators]) => {
-                    const categoryDiv = document.createElement('div');
-                    categoryDiv.className = 'mb-4';
-                    categoryDiv.innerHTML = `
-                        <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">${category}</h4>
+                // Display categories first
+                if (categories.length > 0) {
+                    const categoriesDiv = document.createElement('div');
+                    categoriesDiv.className = 'p-2';
+                    categoriesDiv.innerHTML = `
+                        <div class="px-3 py-2 bg-blue-50 rounded-lg mb-2">
+                            <h4 class="text-sm font-semibold text-blue-600 uppercase tracking-wider">Categories</h4>
+                        </div>
                         <div class="space-y-1">
-                            ${calculators.map(calculator => `
-                                <a href="${calculator.url}" class="block p-3 hover:bg-gray-50 rounded-lg transition duration-150">
+                            ${categories.map(category => `
+                                <a href="${category.url}" class="block px-3 py-2 hover:bg-gray-50 rounded-lg transition duration-150">
                                     <div class="flex items-center">
-                                        <i class="fas fa-calculator text-blue-600 mr-3"></i>
+                                        <i class="fas ${category.icon} text-blue-600 mr-3"></i>
                                         <div>
-                                            <h5 class="font-medium">${calculator.name}</h5>
-                                            <p class="text-sm text-gray-500">${calculator.keywords.join(', ')}</p>
+                                            <h5 class="font-medium text-gray-900">${category.name}</h5>
+                                            <p class="text-sm text-gray-500">${category.description}</p>
                                         </div>
                                     </div>
                                 </a>
                             `).join('')}
                         </div>
                     `;
-                    searchResultsList.appendChild(categoryDiv);
-                });
+                    container.appendChild(categoriesDiv);
+                }
+
+                // Display calculators grouped by category
+                if (calculators.length > 0) {
+                    const groupedCalculators = calculators.reduce((acc, calculator) => {
+                        if (!acc[calculator.category]) {
+                            acc[calculator.category] = [];
+                        }
+                        acc[calculator.category].push(calculator);
+                        return acc;
+                    }, {});
+
+                    Object.entries(groupedCalculators).forEach(([category, categoryCalculators]) => {
+                        const categoryDiv = document.createElement('div');
+                        categoryDiv.className = 'p-2';
+                        categoryDiv.innerHTML = `
+                            <div class="px-3 py-2 bg-gray-50 rounded-lg mb-2">
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider">${category} Calculators</h4>
+                            </div>
+                            <div class="space-y-1">
+                                ${categoryCalculators.map(calculator => `
+                                    <a href="${calculator.url}" class="block px-3 py-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-calculator text-blue-600 mr-3"></i>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900">${calculator.name}</h5>
+                                                <p class="text-sm text-gray-500">${calculator.keywords.join(', ')}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                `).join('')}
+                            </div>
+                        `;
+                        container.appendChild(categoryDiv);
+                    });
+                }
             }
 
-            searchResults.classList.remove('hidden');
-            body.style.overflow = 'hidden';
-        }
-
-        function closeSearchResults() {
-            searchResults.classList.add('hidden');
-            body.style.overflow = 'auto';
+            container.classList.remove('hidden');
         }
 
         // Close search results when clicking outside
-        searchResults.addEventListener('click', (e) => {
-            if (e.target === searchResults) {
-                closeSearchResults();
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('input[type="text"]') && !e.target.closest('[id$="SearchResults"]')) {
+                document.querySelectorAll('[id$="SearchResults"]').forEach(container => {
+                    container.classList.add('hidden');
+                });
             }
-        });
-
-        // Add input event listeners to all search inputs
-        document.querySelectorAll('input[type="text"]').forEach(input => {
-            input.addEventListener('input', () => handleSearchInput(input));
         });
 
         // Mobile menu functionality
