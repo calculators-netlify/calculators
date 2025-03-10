@@ -82,9 +82,9 @@
                     <div class="hidden sm:block">
                         <div class="relative">
                             <input type="text" id="searchInput" placeholder="Search calculators..." class="w-64 px-4 py-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <button onclick="searchCalculators()" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-blue-600">
+                            <div class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
                                 <i class="fas fa-search"></i>
-                            </button>
+                            </div>
                         </div>
                     </div>
 
@@ -125,9 +125,9 @@
             <div class="max-w-2xl mx-auto">
                 <div class="relative">
                     <input type="text" id="heroSearch" placeholder="Search for calculators..." class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button onclick="searchCalculators()" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-blue-600">
+                    <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
                         <i class="fas fa-search text-xl"></i>
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -362,43 +362,30 @@
             .then(data => {
                 calculatorData = data.calculators;
             })
-            .catch(error => console.error('Error loading calculator data:', error));
-
-        function toggleMobileMenu() {
-            const isOpen = mobileMenu.classList.contains('hidden');
-            mobileMenu.classList.toggle('hidden');
-            mobileMenuBackdrop.classList.toggle('hidden');
-            mobileMenuButton.setAttribute('aria-expanded', !isOpen);
-            
-            if (!isOpen) {
-                body.style.overflow = 'auto';
-            } else {
-                body.style.overflow = 'hidden';
-            }
-        }
-
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-        mobileMenuBackdrop.addEventListener('click', toggleMobileMenu);
-
-        // Close mobile menu on window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 640) {
-                mobileMenu.classList.add('hidden');
-                mobileMenuBackdrop.classList.add('hidden');
-                mobileMenuButton.setAttribute('aria-expanded', 'false');
-                body.style.overflow = 'auto';
-            }
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenuBackdrop.classList.add('hidden');
-                mobileMenuButton.setAttribute('aria-expanded', 'false');
-                body.style.overflow = 'auto';
+            .catch(error => {
+                console.error('Error loading calculator data:', error);
+                // Fallback data in case of fetch error
+                calculatorData = [
+                    {
+                        name: "Percentage Calculator",
+                        url: "/math/percentage.html",
+                        category: "Math",
+                        keywords: ["percentage", "percent", "calculation", "math", "ratio", "proportion"]
+                    },
+                    {
+                        name: "Age Calculator",
+                        url: "/date/age.html",
+                        category: "Date",
+                        keywords: ["age", "birthday", "date", "time", "birth", "years"]
+                    },
+                    {
+                        name: "Loan Calculator",
+                        url: "/finance/loan.html",
+                        category: "Finance",
+                        keywords: ["loan", "mortgage", "finance", "money", "interest", "payment"]
+                    }
+                ];
             });
-        });
 
         // Search functionality with predictions
         function handleSearchInput(input) {
@@ -422,7 +409,7 @@
                 });
 
                 displaySearchResults(results);
-            }, 300); // Wait 300ms after user stops typing
+            }, 200); // Reduced delay for faster response
         }
 
         function displaySearchResults(results) {
@@ -483,10 +470,42 @@
         // Add input event listeners to all search inputs
         document.querySelectorAll('input[type="text"]').forEach(input => {
             input.addEventListener('input', () => handleSearchInput(input));
-            input.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    handleSearchInput(input);
-                }
+        });
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const isOpen = mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBackdrop.classList.toggle('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', !isOpen);
+            
+            if (!isOpen) {
+                body.style.overflow = 'auto';
+            } else {
+                body.style.overflow = 'hidden';
+            }
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        mobileMenuBackdrop.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 640) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBackdrop.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                body.style.overflow = 'auto';
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBackdrop.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                body.style.overflow = 'auto';
             });
         });
     </script>
