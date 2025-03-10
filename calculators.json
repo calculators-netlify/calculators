@@ -1,4 +1,48 @@
 {
+    "categories": [
+        {
+            "name": "Math",
+            "url": "/math",
+            "description": "Basic and advanced mathematical calculations",
+            "icon": "fa-square-root-alt",
+            "keywords": ["math", "mathematics", "calculation", "numbers", "basic math", "advanced math"]
+        },
+        {
+            "name": "Date",
+            "url": "/date",
+            "description": "Date planning and time calculations",
+            "icon": "fa-calendar-alt",
+            "keywords": ["date", "time", "calendar", "age", "duration", "planning"]
+        },
+        {
+            "name": "Finance",
+            "url": "/finance",
+            "description": "Money and investment calculations",
+            "icon": "fa-dollar-sign",
+            "keywords": ["finance", "money", "investment", "loan", "mortgage", "tax"]
+        },
+        {
+            "name": "Converters",
+            "url": "/converter",
+            "description": "Convert between different units",
+            "icon": "fa-exchange-alt",
+            "keywords": ["convert", "conversion", "units", "measurement", "temperature", "currency"]
+        },
+        {
+            "name": "Health",
+            "url": "/health",
+            "description": "Health and fitness calculations",
+            "icon": "fa-heartbeat",
+            "keywords": ["health", "fitness", "bmi", "calories", "body fat", "nutrition"]
+        },
+        {
+            "name": "Scientific",
+            "url": "/scientific",
+            "description": "Advanced scientific calculations",
+            "icon": "fa-flask",
+            "keywords": ["scientific", "physics", "chemistry", "engineering", "science"]
+        }
+    ],
     "calculators": [
         {
             "name": "Percentage Calculator",
