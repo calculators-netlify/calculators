@@ -60,7 +60,17 @@ def get_calculator_data(weeks, calculator_data):
         return {
             "name": template['nameTemplate'].replace('{n}', str(weeks)),
             "description": template['descriptionTemplate'].replace('{n}', str(weeks)),
-            "keywords": template['keywords'],
+            "keywords": template['keywords'] + [
+                f"{weeks} weeks",
+                f"{weeks * 7} days",
+                f"{weeks} weeks from now",
+                f"{weeks} weeks ahead",
+                "date calculator",
+                "future date",
+                "calendar planning",
+                "date planning",
+                "week calculator"
+            ],
             "relatedContent": template['relatedContent']
         }
     
@@ -77,7 +87,33 @@ def get_calculator_data(weeks, calculator_data):
         ]
     }
 
+def generate_structured_data(weeks, today, future_date, base_url):
+    return {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": f"{weeks} Weeks From Today Calculator",
+        "description": f"Calculate the date {weeks} weeks from today. Find out what date will be in {weeks} weeks from {today.strftime('%B %d, %Y')}.",
+        "url": f"{base_url}/date/{weeks}-weeks-from-today.html",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "datePublished": "2024-03-11",
+        "dateModified": datetime.now().strftime("%Y-%m-%d"),
+        "provider": {
+            "@type": "Organization",
+            "name": "Free Calculators",
+            "url": base_url
+        }
+    }
+
 def generate_week_page(weeks):
+    base_url = "https://free-calculators.netlify.app"
+    calculator_data = get_calculator_data(weeks, load_calculator_data())
+    
     # Calculate the future date
     today = datetime.now()
     future_date = today + timedelta(weeks=weeks)
@@ -86,10 +122,11 @@ def generate_week_page(weeks):
     today_str = today.strftime("%B %d, %Y")
     future_str = future_date.strftime("%B %d, %Y")
     
-    # Create page title and description
+    # Create page title and meta description
     weeks_text = "1 week" if weeks == 1 else f"{weeks} weeks"
-    title = f"{weeks_text.capitalize()} From Today - Date Calculator"
-    description = f"Calculate the date {weeks_text} from today ({today_str}). Find out what date will be in {weeks_text}."
+    title = f"{weeks_text.capitalize()} From Today - Date Calculator | Free Calculators"
+    meta_description = f"Calculate the date {weeks_text} from today ({today_str}). Find out what date will be in {weeks_text}. Free online date calculator with detailed results and planning tips."
+    canonical_url = f"{base_url}/date/{weeks}-weeks-from-today.html"
 
     # Generate dynamic content based on weeks
     use_cases = [
@@ -154,6 +191,9 @@ def generate_week_page(weeks):
             </a>
         '''
 
+    # Generate structured data
+    structured_data = generate_structured_data(weeks, today, future_date, base_url)
+
     # Generate the HTML content
     html_content = f'''<!DOCTYPE html>
 <html lang="en">
@@ -161,7 +201,45 @@ def generate_week_page(weeks):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-    <meta name="description" content="{description}">
+    <meta name="description" content="{meta_description}">
+    <meta name="keywords" content="{', '.join(calculator_data['keywords'])}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{canonical_url}">
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{meta_description}">
+    <meta property="og:image" content="{base_url}/images/date-calculator-og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{canonical_url}">
+    <meta property="twitter:title" content="{title}">
+    <meta property="twitter:description" content="{meta_description}">
+    <meta property="twitter:image" content="{base_url}/images/date-calculator-twitter.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{canonical_url}">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Free Calculators">
+    <meta name="language" content="English">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {json.dumps(structured_data, indent=2)}
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -204,13 +282,26 @@ def generate_week_page(weeks):
         <main class="py-8">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Breadcrumb -->
-                <nav class="text-gray-500 mb-4">
-                    <ol class="list-none p-0 flex flex-wrap space-x-2">
-                        <li><a href="/" class="hover:text-blue-600">Home</a></li>
+                <nav class="text-gray-500 mb-4" aria-label="Breadcrumb">
+                    <ol class="list-none p-0 flex flex-wrap space-x-2" itemscope itemtype="https://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a href="/" class="hover:text-blue-600" itemprop="item">
+                                <span itemprop="name">Home</span>
+                            </a>
+                            <meta itemprop="position" content="1" />
+                        </li>
                         <li>/</li>
-                        <li><a href="/date" class="hover:text-blue-600">Date Calculators</a></li>
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a href="/date" class="hover:text-blue-600" itemprop="item">
+                                <span itemprop="name">Date Calculators</span>
+                            </a>
+                            <meta itemprop="position" content="2" />
+                        </li>
                         <li>/</li>
-                        <li class="text-gray-900">{weeks_text.capitalize()} From Today</li>
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <span itemprop="name" class="text-gray-900">{weeks_text.capitalize()} From Today</span>
+                            <meta itemprop="position" content="3" />
+                        </li>
                     </ol>
                 </nav>
 
