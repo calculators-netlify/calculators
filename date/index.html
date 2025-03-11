@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Calculators | Week From Today Collection</title>
+    <meta name="description" content="Explore our comprehensive collection of date calculators. Calculate dates weeks from today, plan ahead, and manage your schedule effectively with our easy-to-use tools.">
+    <meta name="keywords" content="date calculator, weeks from today, date planning, calendar calculator, future date calculator">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Date Calculators | Plan Future Dates & Time Calculations">
+    <meta name="description" content="Free collection of date and time calculators. Calculate future dates, age, duration, and more. Perfect for planning, scheduling, and time management.">
+    <meta name="keywords" content="date calculator, time calculator, weeks from today, age calculator, duration calculator, date planner, schedule calculator">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Date Calculators | Plan Future Dates & Time Calculations">
+    <meta property="og:description" content="Free collection of date and time calculators. Calculate future dates, age, duration, and more. Perfect for planning, scheduling, and time management.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Date Calculators | Plan Future Dates & Time Calculations">
+    <meta property="twitter:description" content="Free collection of date and time calculators. Calculate future dates, age, duration, and more. Perfect for planning, scheduling, and time management.">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Date Calculators Collection",
+        "description": "Free collection of date and time calculators for planning and scheduling.",
+        "url": "https://free-calculators.netlify.app/date/",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://free-calculators.netlify.app/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Date Calculators",
+                    "item": "https://free-calculators.netlify.app/date/"
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .calculator-card {
+            transition: all 0.3s ease;
+        }
+        .calculator-card:hover {
+            transform: translateY(-5px);
+        }
+        #navbar-placeholder {
+            position: relative;
+            z-index: 20;
+        }
+        #breadcrumb-placeholder {
+            position: relative;
+            z-index: 10;
+            margin-top: -1px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="loading" class="page-loader">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
+    </div>
+
+    <div id="content" class="hidden min-h-screen flex flex-col">
+        <div id="navbar-placeholder"></div>
+        <div id="breadcrumb-placeholder"></div>
+
+        <main class="container mx-auto px-4 py-8 flex-grow">
+            <header class="max-w-4xl mx-auto text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Date Calculators</h1>
+                <p class="text-xl text-gray-600">Plan ahead with our collection of date calculators. Whether you need to find a date weeks from today or calculate important deadlines, we've got you covered.</p>
+            </header>
+
+            <section class="max-w-6xl mx-auto mb-12">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-6">Popular Date Calculators</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="popular-calculators"></div>
+            </section>
+
+            <section class="max-w-6xl mx-auto">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-6">All Date Calculators</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="all-calculators"></div>
+            </section>
+        </main>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script>
+        async function loadComponents() {
+            try {
+                const [navbarResponse, breadcrumbResponse, footerResponse] = await Promise.all([
+                    fetch('../components/navbar.html'),
+                    fetch('../components/breadcrumb.html'),
+                    fetch('../components/footer.html')
+                ]);
+
+                if (!navbarResponse.ok || !breadcrumbResponse.ok || !footerResponse.ok) {
+                    throw new Error('Failed to load components');
+                }
+
+                const [navbarHtml, breadcrumbHtml, footerHtml] = await Promise.all([
+                    navbarResponse.text(),
+                    breadcrumbResponse.text(),
+                    footerResponse.text()
+                ]);
+
+                document.getElementById('navbar-placeholder').innerHTML = navbarHtml;
+                document.getElementById('breadcrumb-placeholder').innerHTML = breadcrumbHtml;
+                document.getElementById('footer-placeholder').innerHTML = footerHtml;
+
+                // Generate calculator cards
+                const calculators = [];
+                for (let i = 1; i <= 50; i++) {
+                    calculators.push({
+                        name: `${i} Week${i > 1 ? 's' : ''} From Today`,
+                        url: `${i}-week${i > 1 ? 's' : ''}-from-today.html`,
+                        description: `Calculate the date ${i} week${i > 1 ? 's' : ''} from today. Perfect for planning and scheduling.`,
+                        popular: [1, 2, 4, 8].includes(i)
+                    });
+                }
+
+                // Create calculator cards
+                function createCalculatorCard(calculator, isPopular = false) {
+                    return `
+                        <a href="${calculator.url}" class="calculator-card block">
+                            <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full">
+                                <div class="p-6">
+                                    <div class="flex items-center mb-3">
+                                        <i class="fas fa-calendar-alt text-blue-600 text-xl mr-3"></i>
+                                        <h3 class="text-xl font-semibold text-gray-900">${calculator.name}</h3>
+                                    </div>
+                                    <p class="text-gray-600">${calculator.description}</p>
+                                    ${isPopular ? '<span class="inline-block mt-4 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Popular</span>' : ''}
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                }
+
+                // Populate popular calculators
+                const popularCalculators = calculators.filter(c => c.popular);
+                document.getElementById('popular-calculators').innerHTML = popularCalculators
+                    .map(calc => createCalculatorCard(calc, true))
+                    .join('');
+
+                // Populate all calculators
+                document.getElementById('all-calculators').innerHTML = calculators
+                    .map(calc => createCalculatorCard(calc))
+                    .join('');
+
+                // Show content and hide loading spinner
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').classList.remove('hidden');
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading').innerHTML = `
+                    <div class="text-center">
+                        <p class="text-red-500 mb-4">Failed to load content</p>
+                        <button onclick="location.reload()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+</body>
+</html> 

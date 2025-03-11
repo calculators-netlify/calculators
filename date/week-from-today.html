@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Week From Today Calculator | Find Future Date</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="1 Week From Today Calculator | Find Future Date">
+    <meta name="description" content="Calculate the date 1 week from today with our easy-to-use future date calculator. Perfect for planning, scheduling, and deadline calculations.">
+    <meta name="keywords" content="1 week from today, future date calculator, date calculator, week calculator, date planning, schedule calculator">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://free-calculators.netlify.app/date/week-from-today">
+    <meta property="og:title" content="1 Week From Today Calculator | Find Future Date">
+    <meta property="og:description" content="Calculate the date 1 week from today with our easy-to-use future date calculator. Perfect for planning, scheduling, and deadline calculations.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://free-calculators.netlify.app/date/week-from-today">
+    <meta property="twitter:title" content="1 Week From Today Calculator | Find Future Date">
+    <meta property="twitter:description" content="Calculate the date 1 week from today with our easy-to-use future date calculator. Perfect for planning, scheduling, and deadline calculations.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://free-calculators.netlify.app/date/week-from-today">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .page-loader.loaded {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .main-content.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Loading spinner -->
+    <div class="page-loader">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-600"></div>
+    </div>
+
+    <!-- Main content wrapper -->
+    <div class="main-content">
+        <!-- Navigation placeholder -->
+        <div id="navbar"></div>
+
+        <!-- Calculator Section -->
+        <section class="pt-24 pb-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">1 Week From Today Calculator</h1>
+                    <p class="text-xl text-gray-600">Find out what date will be exactly one week from today</p>
+                </div>
+
+                <!-- Calculator Card -->
+                <div class="max-w-xl mx-auto bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <div class="space-y-6">
+                        <!-- Start Date Input -->
+                        <div>
+                            <label for="startDate" class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+                            <input type="date" id="startDate" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button onclick="calculateOneWeek()" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                            Calculate Date
+                        </button>
+
+                        <!-- Result Display -->
+                        <div id="result" class="hidden">
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-blue-900 mb-2">Result</h3>
+                                <p class="text-blue-800" id="resultText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Use Guide -->
+                <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-6" data-aos="fade-up">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">How to Use the 1 Week From Today Calculator</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600">
+                                    1
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Select Start Date</h3>
+                                <p class="text-gray-600">Choose your starting date using the date picker. By default, it's set to today's date.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600">
+                                    2
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Click Calculate</h3>
+                                <p class="text-gray-600">Press the "Calculate Date" button to find the date that will be exactly one week from your selected date.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600">
+                                    3
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">View Result</h3>
+                                <p class="text-gray-600">The calculator will display the future date, showing you exactly what date will be one week from your selected date.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Use Cases -->
+                <div class="max-w-3xl mx-auto mt-12 bg-white rounded-lg shadow-lg p-6" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Common Uses for the 1 Week From Today Calculator</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-calendar-check text-blue-600 text-xl mt-1"></i>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Project Planning</h3>
+                                <p class="text-gray-600">Set deadlines and milestones for short-term projects</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-blue-600 text-xl mt-1"></i>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Scheduling</h3>
+                                <p class="text-gray-600">Plan meetings and appointments for next week</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-tasks text-blue-600 text-xl mt-1"></i>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Task Management</h3>
+                                <p class="text-gray-600">Set due dates for upcoming tasks</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-plane-departure text-blue-600 text-xl mt-1"></i>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Travel Planning</h3>
+                                <p class="text-gray-600">Plan return dates for week-long trips</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer placeholder -->
+        <div id="footer"></div>
+    </div>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Components loader -->
+    <script src="/js/components.js"></script>
+    
+    <script>
+        // Track loading state of components
+        let componentsLoaded = {
+            navbar: false,
+            footer: false
+        };
+
+        function checkAllComponentsLoaded() {
+            if (componentsLoaded.navbar && componentsLoaded.footer) {
+                document.querySelector('.page-loader').classList.add('loaded');
+                document.querySelector('.main-content').classList.add('loaded');
+            }
+        }
+
+        // Load components
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                await Promise.all([
+                    loadComponent('navbar', '/components/navbar.html').then(() => {
+                        componentsLoaded.navbar = true;
+                        checkAllComponentsLoaded();
+                    }),
+                    loadComponent('footer', '/components/footer.html').then(() => {
+                        componentsLoaded.footer = true;
+                        checkAllComponentsLoaded();
+                    })
+                ]);
+
+                // Initialize date input with today's date
+                const today = new Date();
+                const formattedDate = today.toISOString().split('T')[0];
+                document.getElementById('startDate').value = formattedDate;
+            } catch (error) {
+                console.error('Error loading components:', error);
+                document.querySelector('.page-loader').innerHTML = `
+                    <div class="text-center">
+                        <p class="text-red-600 mb-2">Error loading page components</p>
+                        <button onclick="window.location.reload()" class="px-4 py-2 bg-blue-600 text-white rounded">
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
+        });
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Calculator function
+        function calculateOneWeek() {
+            const startDate = new Date(document.getElementById('startDate').value);
+            const resultDate = new Date(startDate);
+            resultDate.setDate(resultDate.getDate() + 7);
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedStartDate = startDate.toLocaleDateString('en-US', options);
+            const formattedResultDate = resultDate.toLocaleDateString('en-US', options);
+
+            document.getElementById('resultText').innerHTML = `
+                Starting from <strong>${formattedStartDate}</strong>,<br>
+                One week from this date will be <strong>${formattedResultDate}</strong>
+            `;
+            document.getElementById('result').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html> 

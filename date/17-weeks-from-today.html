@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 weeks From Today - Date Calculator</title>
+    <meta name="description" content="Calculate the date 17 weeks from today (March 11, 2025). Find out what date will be in 17 weeks.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .page-loader.loaded {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .main-content.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Loading spinner -->
+    <div class="page-loader">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-600"></div>
+    </div>
+
+    <!-- Main content wrapper -->
+    <div class="main-content">
+        <div id="navbar"></div>
+
+        <main class="py-8">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Breadcrumb -->
+                <nav class="text-gray-500 mb-4">
+                    <ol class="list-none p-0 flex flex-wrap space-x-2">
+                        <li><a href="/" class="hover:text-blue-600">Home</a></li>
+                        <li>/</li>
+                        <li><a href="/date" class="hover:text-blue-600">Date Calculators</a></li>
+                        <li>/</li>
+                        <li class="text-gray-900">17 weeks From Today</li>
+                    </ol>
+                </nav>
+
+                <!-- Title Section -->
+                <div class="text-center mb-6">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">17 weeks From Today</h1>
+                    <p class="text-lg sm:text-xl text-gray-600">Find out what date will be in 17 weeks from today</p>
+                </div>
+
+                <!-- Enhanced Date Display -->
+                <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl shadow-lg p-6 mb-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <!-- Today's Date Card -->
+                        <div class="w-full md:w-5/12 bg-white rounded-xl shadow-sm p-4">
+                            <div class="text-center">
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-2">Today</span>
+                                <div class="text-3xl font-bold text-gray-800 mb-1">March 11</div>
+                                <div class="text-lg text-gray-600">2025</div>
+                                <div class="text-sm text-blue-600 mt-1">Tuesday</div>
+                            </div>
+                        </div>
+
+                        <!-- Arrow and Days -->
+                        <div class="flex flex-col items-center py-2">
+                            <div class="text-blue-600 font-semibold mb-1">119 days</div>
+                            <div class="relative">
+                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-blue-100 rounded-full"></div>
+                                <i class="fas fa-arrow-right text-blue-600 text-2xl relative z-10"></i>
+                            </div>
+                        </div>
+
+                        <!-- Future Date Card -->
+                        <div class="w-full md:w-5/12 bg-white rounded-xl shadow-sm p-4">
+                            <div class="text-center">
+                                <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-2">17 weeks Later</span>
+                                <div class="text-3xl font-bold text-green-600 mb-1">July 08</div>
+                                <div class="text-lg text-gray-600">2025</div>
+                                <div class="text-sm text-green-600 mt-1">Tuesday</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Calculators and External Link - Above the fold -->
+                <div class="grid gap-6 mb-8">
+                    
+
+                    <!-- Related Week Calculators -->
+                    <div class="bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-6">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Related Date Calculators</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            
+            <a href="/date/11-weeks-from-today.html" 
+               class="flex items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="bg-blue-50 rounded-full p-3 mr-4 group-hover:bg-blue-100 transition-colors duration-300">
+                    <i class="fas fa-calendar-alt text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                        11 weeks from today
+                    </h3>
+                    <p class="text-sm text-gray-500">Calculate future date →</p>
+                </div>
+            </a>
+         
+            <a href="/date/12-weeks-from-today.html" 
+               class="flex items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="bg-blue-50 rounded-full p-3 mr-4 group-hover:bg-blue-100 transition-colors duration-300">
+                    <i class="fas fa-calendar-alt text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                        12 weeks from today
+                    </h3>
+                    <p class="text-sm text-gray-500">Calculate future date →</p>
+                </div>
+            </a>
+         
+            <a href="/date/13-weeks-from-today.html" 
+               class="flex items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="bg-blue-50 rounded-full p-3 mr-4 group-hover:bg-blue-100 transition-colors duration-300">
+                    <i class="fas fa-calendar-alt text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                        13 weeks from today
+                    </h3>
+                    <p class="text-sm text-gray-500">Calculate future date →</p>
+                </div>
+            </a>
+         
+            <a href="/date/14-weeks-from-today.html" 
+               class="flex items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="bg-blue-50 rounded-full p-3 mr-4 group-hover:bg-blue-100 transition-colors duration-300">
+                    <i class="fas fa-calendar-alt text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                        14 weeks from today
+                    </h3>
+                    <p class="text-sm text-gray-500">Calculate future date →</p>
+                </div>
+            </a>
+         
+            <a href="/date/15-weeks-from-today.html" 
+               class="flex items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="bg-blue-50 rounded-full p-3 mr-4 group-hover:bg-blue-100 transition-colors duration-300">
+                    <i class="fas fa-calendar-alt text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                        15 weeks from today
+                    </h3>
+                    <p class="text-sm text-gray-500">Calculate future date →</p>
+                </div>
+            </a>
+        
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Information -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <div class="bg-blue-50 rounded-xl p-6">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Time Overview</h2>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-calendar-week text-blue-600 w-6"></i>
+                                <span class="ml-2">Weeks: <strong>17</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-calendar-day text-blue-600 w-6"></i>
+                                <span class="ml-2">Days: <strong>119</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-clock text-blue-600 w-6"></i>
+                                <span class="ml-2">Hours: <strong>2856</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 rounded-xl p-6">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Date Details</h2>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-calendar-alt text-green-600 w-6"></i>
+                                <span class="ml-2">Start: <strong>Tuesday, March 11</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-calendar-check text-green-600 w-6"></i>
+                                <span class="ml-2">End: <strong>Tuesday, July 08</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-calendar text-green-600 w-6"></i>
+                                <span class="ml-2">Months: 
+                                    <strong>March → July</strong>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Comprehensive Guide -->
+                <div class="bg-white rounded-xl shadow-md p-6 mb-12">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Complete Guide to 17 weeks Date Planning</h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Understanding the Calculation -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Understanding the Calculation</h3>
+                            <p class="text-gray-600 mb-4">When calculating 17 weeks from March 11, 2025, we account for:</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                                <li>Regular calendar progression across 119 days</li>
+                                <li>Month transitions and varying month lengths</li>
+                                <li>Year transitions when applicable</li>
+                                <li>Weekend and weekday distributions</li>
+                            </ul>
+                        </div>
+
+                        <!-- Common Use Cases -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Common Use Cases</h3>
+                            <p class="text-gray-600 mb-4">This 17 weeks calculator is particularly useful for:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                
+            <div class="flex items-start">
+                <i class="fas fa-calendar-check text-blue-600 text-xl mt-1 mr-3"></i>
+                <p class="text-gray-600">Plan meetings and events 17 weeks in advance</p>
+            </div>
+        
+
+            <div class="flex items-start">
+                <i class="fas fa-clock text-blue-600 text-xl mt-1 mr-3"></i>
+                <p class="text-gray-600">Schedule appointments and follow-ups for 17 weeks later</p>
+            </div>
+        
+
+            <div class="flex items-start">
+                <i class="fas fa-tasks text-blue-600 text-xl mt-1 mr-3"></i>
+                <p class="text-gray-600">Set project milestones and deadlines</p>
+            </div>
+        
+
+            <div class="flex items-start">
+                <i class="fas fa-calendar-alt text-blue-600 text-xl mt-1 mr-3"></i>
+                <p class="text-gray-600">Plan future travel or events</p>
+            </div>
+        
+                            </div>
+                        </div>
+
+                        <!-- Planning Tips -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Planning Tips</h3>
+                            <p class="text-gray-600 mb-4">Make the most of your 17 weeks planning with these tips:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                
+            <div class="flex items-start">
+                <i class="fas fa-calendar-check text-blue-600 text-xl mt-1 mr-3"></i>
+                <p class="text-gray-600">Consider weekends and holidays when planning</p>
+            </div>
+        
+
+            <div class="flex items-start">
+                <i class="fas fa-clock text-blue-600 text-xl mt-1 mr-3"></i>
+                <p class="text-gray-600">Set reminders a few days before the target date</p>
+            </div>
+        
+
+            <div class="flex items-start">
+                <i class="fas fa-tasks text-blue-600 text-xl mt-1 mr-3"></i>
+                <p class="text-gray-600">Account for business days vs calendar days</p>
+            </div>
+        
+
+            <div class="flex items-start">
+                <i class="fas fa-calendar-alt text-blue-600 text-xl mt-1 mr-3"></i>
+                <p class="text-gray-600">Use digital calendar apps for better tracking</p>
+            </div>
+        
+                            </div>
+                        </div>
+
+                        <!-- Additional Considerations -->
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Additional Considerations</h3>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="text-gray-600 mb-3">When planning 17 weeks ahead, consider these factors:</p>
+                                <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                                    <li>Holiday schedules and business days</li>
+                                    <li>Seasonal changes and weather patterns</li>
+                                    <li>Time zone differences for international planning</li>
+                                    <li>Buffer time for unexpected delays</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Pro Tips -->
+                        <div class="bg-blue-50 rounded-lg p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Pro Tips</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-lightbulb text-yellow-500 text-xl mt-1 mr-3"></i>
+                                    <p class="text-gray-700">Set reminders 8 weeks before the target date</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-calendar-alt text-blue-500 text-xl mt-1 mr-3"></i>
+                                    <p class="text-gray-700">Use digital calendar apps for better tracking</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+    </div>
+
+    <script src="/js/components.js"></script>
+    <script>
+        // Track loading state of components
+        let componentsLoaded = {
+            navbar: false,
+            footer: false
+        };
+
+        function checkAllComponentsLoaded() {
+            if (componentsLoaded.navbar && componentsLoaded.footer) {
+                // Hide loader and show content
+                document.querySelector('.page-loader').classList.add('loaded');
+                document.querySelector('.main-content').classList.add('loaded');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                await Promise.all([
+                    loadComponent('navbar', '/components/navbar.html').then(() => {
+                        componentsLoaded.navbar = true;
+                        checkAllComponentsLoaded();
+                    }),
+                    loadComponent('footer', '/components/footer.html').then(() => {
+                        componentsLoaded.footer = true;
+                        checkAllComponentsLoaded();
+                    })
+                ]);
+            } catch (error) {
+                console.error('Error loading components:', error);
+                document.querySelector('.page-loader').innerHTML = `
+                    <div class="text-center">
+                        <p class="text-red-600 mb-2">Error loading page components</p>
+                        <button onclick="window.location.reload()" class="px-4 py-2 bg-blue-600 text-white rounded">
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

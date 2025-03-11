@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Categories | Free Online Calculators</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Calculator Categories | Free Online Calculators">
+    <meta name="description" content="Browse our comprehensive collection of calculator categories. From date calculations to math, finance, and more. All tools are free and easy to use.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .coming-soon {
+            position: relative;
+            cursor: not-allowed;
+        }
+        .coming-soon::after {
+            content: 'Coming Soon';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #EF4444;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0 0.5rem 0 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation placeholder -->
+    <div id="navbar"></div>
+
+    <!-- Main Content -->
+    <main class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold text-center mb-8">Calculator Categories</h1>
+            <p class="text-xl text-gray-600 text-center mb-12">Browse our comprehensive collection of calculators by category</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Date Calculators - Active -->
+                <a href="/date" class="bg-white rounded-lg shadow-lg p-6 transform hover:-translate-y-1 transition duration-300">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-calendar-alt text-4xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Date Calculators</h3>
+                    <p class="text-gray-600 text-center mb-4">Date planning and time calculations</p>
+                    <div class="block text-center bg-blue-100 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-200 transition duration-300">
+                        Explore
+                    </div>
+                </a>
+
+                <!-- Math Calculators - Coming Soon -->
+                <div class="bg-white rounded-lg shadow-lg p-6 coming-soon">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-square-root-alt text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Math Calculators</h3>
+                    <p class="text-gray-600 text-center mb-4">Basic and advanced mathematical calculations</p>
+                    <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                        Coming Soon
+                    </div>
+                </div>
+
+                <!-- Financial Calculators - Coming Soon -->
+                <div class="bg-white rounded-lg shadow-lg p-6 coming-soon">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-dollar-sign text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Financial Calculators</h3>
+                    <p class="text-gray-600 text-center mb-4">Money and investment calculations</p>
+                    <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                        Coming Soon
+                    </div>
+                </div>
+
+                <!-- Unit Converters - Coming Soon -->
+                <div class="bg-white rounded-lg shadow-lg p-6 coming-soon">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-exchange-alt text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Unit Converters</h3>
+                    <p class="text-gray-600 text-center mb-4">Convert between different units</p>
+                    <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                        Coming Soon
+                    </div>
+                </div>
+
+                <!-- Health Calculators - Coming Soon -->
+                <div class="bg-white rounded-lg shadow-lg p-6 coming-soon">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-heartbeat text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Health Calculators</h3>
+                    <p class="text-gray-600 text-center mb-4">Health and fitness calculations</p>
+                    <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                        Coming Soon
+                    </div>
+                </div>
+
+                <!-- Scientific Calculators - Coming Soon -->
+                <div class="bg-white rounded-lg shadow-lg p-6 coming-soon">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-flask text-4xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Scientific Calculators</h3>
+                    <p class="text-gray-600 text-center mb-4">Advanced scientific calculations</p>
+                    <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer placeholder -->
+    <div id="footer"></div>
+
+    <!-- Components loader -->
+    <script src="/js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                await Promise.all([
+                    loadComponent('navbar', '/components/navbar.html'),
+                    loadComponent('footer', '/components/footer.html')
+                ]);
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        });
+    </script>
+</body>
+</html> 

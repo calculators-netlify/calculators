@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Calculators Hub | Math, Date, Finance & More</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Free Online Calculators Hub | Math, Date, Finance & More">
+    <meta name="description" content="Access our comprehensive collection of free online calculators. From basic math to advanced financial calculations, date planning, and unit conversions. All tools are free and easy to use.">
+    <meta name="keywords" content="free calculator, online calculator, math calculator, date calculator, financial calculator, unit converter, scientific calculator, percentage calculator, age calculator, time calculator">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://free-calculators.netlify.app/">
+    <meta property="og:title" content="Free Online Calculators Hub | Math, Date, Finance & More">
+    <meta property="og:description" content="Access our comprehensive collection of free online calculators. From basic math to advanced financial calculations, date planning, and unit conversions. All tools are free and easy to use.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://free-calculators.netlify.app/">
+    <meta property="twitter:title" content="Free Online Calculators Hub | Math, Date, Finance & More">
+    <meta property="twitter:description" content="Access our comprehensive collection of free online calculators. From basic math to advanced financial calculations, date planning, and unit conversions. All tools are free and easy to use.">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="google-site-verification" content="kRcnwOGy_lYnQHzd5tDeYZ4XlSReGwLm56OhP_6R7z0" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://free-calculators.netlify.app/">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Free Online Calculators Hub",
+        "description": "Access our comprehensive collection of free online calculators. From basic math to advanced financial calculations, date planning, and unit conversions.",
+        "url": "https://free-calculators.netlify.app/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://free-calculators.netlify.app/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .page-loader.loaded {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .main-content.loaded {
+            opacity: 1;
+        }
+        /* Add styles to ensure categories are visible */
+        #categories [data-aos] {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+        #categories .grid > * {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Loading spinner -->
+    <div class="page-loader">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-600"></div>
+    </div>
+
+    <!-- Main content wrapper -->
+    <div class="main-content">
+        <!-- Navigation placeholder -->
+        <div id="navbar"></div>
+
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Free Online Calculators</h1>
+                <p class="text-xl mb-8">Access our comprehensive collection of calculation tools. From date planning to advanced calculations.</p>
+                <div class="max-w-2xl mx-auto">
+                    <div class="relative">
+                        <input type="text" id="heroSearch" placeholder="Search for calculators..." class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+                            <i class="fas fa-search text-xl"></i>
+                        </div>
+                        <!-- Hero Search Results -->
+                        <div id="heroSearchResults" class="hidden absolute left-0 right-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto z-50">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Categories -->
+        <section id="categories" class="py-12 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Calculator Categories</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Date Calculators - Active -->
+                    <a href="/date" class="block bg-white rounded-lg shadow-lg p-6 transform hover:-translate-y-1 transition duration-300" data-aos="fade-up">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-calendar-alt text-4xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Date Calculators</h3>
+                        <p class="text-gray-600 text-center mb-4">Date planning and time calculations</p>
+                        <div class="block text-center bg-blue-100 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-200 transition duration-300">
+                            Explore
+                        </div>
+                    </a>
+
+                    <!-- Math Calculators - Coming Soon -->
+                    <div class="block bg-white rounded-lg shadow-lg p-6 relative" data-aos="fade-up">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
+                            Coming Soon
+                        </div>
+                        <div class="text-center mb-4">
+                            <i class="fas fa-square-root-alt text-4xl text-gray-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Math Calculators</h3>
+                        <p class="text-gray-600 text-center mb-4">Basic and advanced mathematical calculations</p>
+                        <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                            Coming Soon
+                        </div>
+                    </div>
+
+                    <!-- Financial Calculators - Coming Soon -->
+                    <div class="block bg-white rounded-lg shadow-lg p-6 relative" data-aos="fade-up">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
+                            Coming Soon
+                        </div>
+                        <div class="text-center mb-4">
+                            <i class="fas fa-dollar-sign text-4xl text-gray-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Financial Calculators</h3>
+                        <p class="text-gray-600 text-center mb-4">Money and investment calculations</p>
+                        <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                            Coming Soon
+                        </div>
+                    </div>
+
+                    <!-- Unit Converters - Coming Soon -->
+                    <div class="block bg-white rounded-lg shadow-lg p-6 relative" data-aos="fade-up">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
+                            Coming Soon
+                        </div>
+                        <div class="text-center mb-4">
+                            <i class="fas fa-exchange-alt text-4xl text-gray-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Unit Converters</h3>
+                        <p class="text-gray-600 text-center mb-4">Convert between different units</p>
+                        <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                            Coming Soon
+                        </div>
+                    </div>
+
+                    <!-- Health Calculators - Coming Soon -->
+                    <div class="block bg-white rounded-lg shadow-lg p-6 relative" data-aos="fade-up">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
+                            Coming Soon
+                        </div>
+                        <div class="text-center mb-4">
+                            <i class="fas fa-heartbeat text-4xl text-gray-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Health Calculators</h3>
+                        <p class="text-gray-600 text-center mb-4">Health and fitness calculations</p>
+                        <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                            Coming Soon
+                        </div>
+                    </div>
+
+                    <!-- Scientific Calculators - Coming Soon -->
+                    <div class="block bg-white rounded-lg shadow-lg p-6 relative" data-aos="fade-up">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
+                            Coming Soon
+                        </div>
+                        <div class="text-center mb-4">
+                            <i class="fas fa-flask text-4xl text-gray-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-2">Scientific Calculators</h3>
+                        <p class="text-gray-600 text-center mb-4">Advanced scientific calculations</p>
+                        <div class="block text-center bg-gray-100 text-gray-400 px-4 py-2 rounded-lg">
+                            Coming Soon
+                        </div>
+                    </div>
+                </div>
+                <!-- See All Categories Button -->
+                <div class="text-center mt-8">
+                    <a href="/categories" class="inline-flex items-center px-6 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition duration-300">
+                        See All Categories
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Calculators Section -->
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Popular Calculators</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- 1 Week From Today - Active -->
+                    <a href="/date/1-week-from-today.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-center">
+                            <i class="fas fa-calendar-day text-3xl text-blue-600 mb-3"></i>
+                            <h3 class="font-semibold text-lg mb-2">1 Week From Today</h3>
+                            <p class="text-gray-600 text-sm mb-3">Calculate date one week ahead</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Active</span>
+                        </div>
+                    </a>
+
+                    <!-- 2 Weeks From Today - Active -->
+                    <a href="/date/2-weeks-from-today.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="text-center">
+                            <i class="fas fa-calendar-week text-3xl text-blue-600 mb-3"></i>
+                            <h3 class="font-semibold text-lg mb-2">2 Weeks From Today</h3>
+                            <p class="text-gray-600 text-sm mb-3">Calculate date two weeks ahead</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Active</span>
+                        </div>
+                    </a>
+
+                    <!-- Percentage Calculator - Coming Soon -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg relative">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
+                            Coming Soon
+                        </div>
+                        <div class="text-center opacity-60">
+                            <i class="fas fa-percentage text-3xl text-gray-400 mb-3"></i>
+                            <h3 class="font-semibold text-lg mb-2">Percentage Calculator</h3>
+                            <p class="text-gray-500 text-sm">Basic percentage calculations</p>
+                        </div>
+                    </div>
+
+                    <!-- Age Calculator - Coming Soon -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg relative">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg">
+                            Coming Soon
+                        </div>
+                        <div class="text-center opacity-60">
+                            <i class="fas fa-user-clock text-3xl text-gray-400 mb-3"></i>
+                            <h3 class="font-semibold text-lg mb-2">Age Calculator</h3>
+                            <p class="text-gray-500 text-sm">Calculate age between dates</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-12 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">Why Choose Our Calculators?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-bolt text-2xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Fast & Accurate</h3>
+                        <p class="text-gray-600">Get instant results with high precision calculations</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-mobile-alt text-2xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Mobile Friendly</h3>
+                        <p class="text-gray-600">Access calculators on any device, anywhere</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lock text-2xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Secure & Private</h3>
+                        <p class="text-gray-600">Your calculations are private and secure</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer placeholder -->
+        <div id="footer"></div>
+    </div>
+
+    <!-- Search Results Modal -->
+    <div id="searchResults" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="max-w-2xl mx-auto mt-20 bg-white rounded-lg shadow-xl">
+            <div class="p-4 border-b">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-semibold">Search Results</h3>
+                    <button onclick="closeSearchResults()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="searchResultsList" class="p-4 max-h-96 overflow-y-auto">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Components loader -->
+    <script src="/js/components.js"></script>
+    
+    <script>
+        // Single declaration of all variables
+        const componentsLoaded = {
+            navbar: false,
+            footer: false
+        };
+        const calculatorData = {
+            categories: []
+        };
+        let isDataLoaded = false;
+
+        function checkAllComponentsLoaded() {
+            if (componentsLoaded.navbar && componentsLoaded.footer) {
+                document.querySelector('.page-loader').classList.add('loaded');
+                document.querySelector('.main-content').classList.add('loaded');
+                // Refresh AOS to trigger animations
+                AOS.refresh();
+            }
+        }
+
+        // Fetch calculator data
+        fetch('/calculators.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data loaded successfully:', data);
+                Object.assign(calculatorData, data);
+                
+                // Process template-based calculators
+                data.categories.forEach(category => {
+                    category.calculators.forEach(calc => {
+                        if (calc.template && calc.variations) {
+                            // Add variations first
+                            calc.variations.forEach(variation => {
+                                calculatorData.categories[0].calculators.push({
+                                    name: variation.name,
+                                    description: variation.description,
+                                    url: variation.url,
+                                    popular: variation.popular,
+                                    keywords: variation.keywords,
+                                    relatedContent: variation.relatedContent
+                                });
+                            });
+
+                            // Generate template-based calculators
+                            const template = calc.template;
+                            for (let i = template.range.start; i <= template.range.end; i++) {
+                                calculatorData.categories[0].calculators.push({
+                                    name: template.nameTemplate.replace('{n}', i),
+                                    description: template.descriptionTemplate.replace('{n}', i),
+                                    url: `/date/${i}-weeks-from-today.html`,
+                                    keywords: template.keywords,
+                                    relatedContent: template.relatedContent
+                                });
+                            }
+                        }
+                    });
+                });
+
+                isDataLoaded = true;
+                initializeSearchInputs();
+            })
+            .catch(error => {
+                console.error('Error loading calculator data:', error);
+                isDataLoaded = true;
+                initializeSearchInputs();
+            });
+
+        // Initialize search inputs
+        function initializeSearchInputs() {
+            const searchInputs = document.querySelectorAll('input[type="text"]');
+            searchInputs.forEach(input => {
+                input.addEventListener('input', () => handleSearchInput(input));
+                input.addEventListener('focus', () => {
+                    if (input.value) {
+                        handleSearchInput(input);
+                    }
+                });
+            });
+        }
+
+        // Search functionality with predictions
+        function handleSearchInput(input) {
+            const searchTerm = input.value.toLowerCase();
+            const resultsContainer = document.getElementById(input.id + 'Results');
+            
+            if (!isDataLoaded || !calculatorData.categories.length) {
+                resultsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">Loading search results...</p>';
+                resultsContainer.classList.remove('hidden');
+                return;
+            }
+
+            if (searchTerm.length === 0) {
+                resultsContainer.classList.add('hidden');
+                return;
+            }
+
+            try {
+                const results = [];
+                
+                // Search in categories and their calculators
+                calculatorData.categories.forEach(category => {
+                    // Search in category
+                    const categoryMatches = category.keywords.some(keyword => 
+                        keyword.toLowerCase().includes(searchTerm)
+                    );
+
+                    // Search in calculators
+                    const matchingCalculators = category.calculators.filter(calc => {
+                        const searchableText = [
+                            calc.name,
+                            calc.description,
+                            ...(calc.keywords || [])
+                        ].join(' ').toLowerCase();
+                        return searchableText.includes(searchTerm);
+                    });
+
+                    if (categoryMatches || matchingCalculators.length > 0) {
+                        results.push({
+                            category: category,
+                            calculators: matchingCalculators
+                        });
+                    }
+                });
+
+                displaySearchResults(results, resultsContainer);
+            } catch (error) {
+                console.error('Error during search:', error);
+                resultsContainer.innerHTML = '<p class="text-red-500 text-center py-4">An error occurred while searching. Please try again.</p>';
+                resultsContainer.classList.remove('hidden');
+            }
+        }
+
+        function displaySearchResults(results, container) {
+            if (results.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-4">No results found. Please try different keywords.</p>';
+            } else {
+                container.innerHTML = '';
+                
+                results.forEach(result => {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.className = 'p-4';
+                    
+                    // Show matching calculators
+                    if (result.calculators.length > 0) {
+                        categoryDiv.innerHTML = `
+                            <div class="px-3 py-2 bg-blue-50 rounded-lg mb-2">
+                                <h4 class="text-sm font-semibold text-blue-600 uppercase tracking-wider">${result.category.name} Calculators</h4>
+                            </div>
+                            <div class="space-y-2">
+                                ${result.calculators.map(calc => `
+                                    <a href="${calc.url}" class="block px-3 py-2 hover:bg-gray-50 rounded-lg transition duration-150">
+                                        <div class="flex items-center">
+                                            <i class="fas ${result.category.icon} text-blue-600 mr-3"></i>
+                                            <div>
+                                                <h5 class="font-medium text-gray-900">${calc.name}</h5>
+                                                <p class="text-sm text-gray-500">${calc.description || calc.keywords.join(', ')}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                `).join('')}
+                            </div>
+                        `;
+                        container.appendChild(categoryDiv);
+                    }
+                });
+            }
+            
+            container.classList.remove('hidden');
+        }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('input[type="text"]') && !e.target.closest('[id$="SearchResults"]')) {
+                document.querySelectorAll('[id$="SearchResults"]').forEach(container => {
+                    container.classList.add('hidden');
+                });
+            }
+        });
+
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // Initialize AOS
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                    offset: 100
+                });
+                
+                await Promise.all([
+                    loadComponent('navbar', '/components/navbar.html').then(() => {
+                        componentsLoaded.navbar = true;
+                        checkAllComponentsLoaded();
+                    }),
+                    loadComponent('footer', '/components/footer.html').then(() => {
+                        componentsLoaded.footer = true;
+                        checkAllComponentsLoaded();
+                    })
+                ]);
+            } catch (error) {
+                console.error('Error loading components:', error);
+                document.querySelector('.page-loader').innerHTML = `
+                    <div class="text-center">
+                        <p class="text-red-600 mb-2">Error loading page components</p>
+                        <button onclick="window.location.reload()" class="px-4 py-2 bg-blue-600 text-white rounded">
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

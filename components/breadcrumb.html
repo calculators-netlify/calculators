@@ -1,0 +1,49 @@
+<!-- Breadcrumb Navigation -->
+<nav class="bg-gray-100 border-b" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <ol class="flex items-center space-x-4">
+            <li class="flex items-center">
+                <a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">
+                    <i class="fas fa-home"></i>
+                    <span class="ml-2">Home</span>
+                </a>
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-chevron-right text-gray-400 text-sm mx-2"></i>
+                <a href="/date/" class="text-gray-600 hover:text-blue-600 transition-colors">
+                    Date Calculators
+                </a>
+            </li>
+            <li id="currentPage" class="flex items-center">
+                <!-- Will be populated by JavaScript -->
+            </li>
+        </ol>
+    </div>
+</nav>
+
+<script>
+    function updateBreadcrumb() {
+        const path = window.location.pathname;
+        const currentPageElement = document.getElementById('currentPage');
+        
+        if (!currentPageElement) return;
+
+        if (path === '/date/' || path === '/date/index.html') {
+            currentPageElement.remove();
+            return;
+        }
+
+        const match = path.match(/\/date\/(\d+)-week[s]?-from-today/);
+        if (match) {
+            const weeks = parseInt(match[1]);
+            currentPageElement.innerHTML = `
+                <i class="fas fa-chevron-right text-gray-400 text-sm mx-2"></i>
+                <span class="text-gray-800">
+                    ${weeks} Week${weeks > 1 ? 's' : ''} From Today
+                </span>
+            `;
+        }
+    }
+
+    updateBreadcrumb();
+</script> 

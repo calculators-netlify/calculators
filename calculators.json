@@ -1,0 +1,62 @@
+{
+    "categories": [
+        {
+            "name": "Date",
+            "url": "/date",
+            "description": "Date planning and time calculations",
+            "icon": "fa-calendar-alt",
+            "keywords": ["date", "time", "calendar", "age", "duration", "planning"],
+            "calculators": [
+                {
+                    "id": "weeks-from-today",
+                    "variations": [
+                        {
+                            "id": "1-week-from-today",
+                            "name": "1 Week From Today",
+                            "description": "Calculate the date exactly one week from today",
+                            "url": "/date/1-week-from-today.html",
+                            "popular": true,
+                            "keywords": ["week", "7 days", "next week", "future date"],
+                            "relatedContent": [
+                                "Plan weekly meetings and events",
+                                "Schedule follow-up appointments",
+                                "Set short-term deadlines",
+                                "Plan weekly routines"
+                            ]
+                        },
+                        {
+                            "id": "2-weeks-from-today",
+                            "name": "2 Weeks From Today",
+                            "description": "Find the date two weeks from today",
+                            "url": "/date/2-weeks-from-today.html",
+                            "popular": true,
+                            "keywords": ["2 weeks", "14 days", "biweekly", "fortnight"],
+                            "relatedContent": [
+                                "Plan biweekly meetings",
+                                "Schedule follow-ups",
+                                "Set project milestones",
+                                "Plan workout routines"
+                            ]
+                        }
+                    ],
+                    "template": {
+                        "pattern": "{n}-weeks-from-today",
+                        "range": {
+                            "start": 3,
+                            "end": 50
+                        },
+                        "nameTemplate": "{n} Weeks From Today",
+                        "descriptionTemplate": "Calculate the date {n} weeks from today",
+                        "keywords": ["weeks", "future date", "planning", "schedule"],
+                        "relatedContent": [
+                            "Long-term planning",
+                            "Project deadlines",
+                            "Event scheduling",
+                            "Future date calculations"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+} 
